@@ -36,18 +36,49 @@
 
 // LOCALE
 // If your locale is not here, you can add it by copying and modifying one of
-// the files in src/locales. Feel free to create a pull request to add
+// the files in src/locales. Please feel free to create a pull request to add
 // official support for your locale.
 // Uncomment your preferred locale. (exactly 1 must be defined)
 // #define LOCALE_EN_GB
 #define LOCALE_EN_US
 
 // UNITS
-// Select either metric or imperial units
-// https://openweathermap.org/api/one-call-api#data
-// Uncomment your preferred units. (exactly 1 must be defined)
-// #define UNITS_METRIC
-#define UNITS_IMPERIAL
+// Define exactly one macro for each unit below.
+
+// UNITS - TEMPERATURE
+//   Metric   : Celsius
+//   Imperial : Fahrenheit
+// #define UNITS_TEMP_KELVIN
+// #define UNITS_TEMP_CELSIUS
+#define UNITS_TEMP_FAHRENHEIT
+
+// UNITS - WIND SPEED
+//   Metric   : Kilometers per Hour
+//   Imperial : Miles per Hour
+// #define UNITS_SPEED_METERSPERSECOND
+// #define UNITS_SPEED_FEETPERSECOND
+// #define UNITS_SPEED_KILOMETERSPERHOUR
+#define UNITS_SPEED_MILESPERHOUR
+// #define UNITS_SPEED_KNOTS
+// #define UNITS_SPEED_BEAUFORT
+
+// UNITS - PRESSURE
+//   Metric   : Millibars
+//   Imperial : Inches of Mercury
+// #define UNITS_PRES_HECTOPASCALS
+// #define UNITS_PRES_PASCALS
+// #define UNITS_PRES_MILLIMETERSOFMERCURY
+#define UNITS_PRES_INCHESOFMERCURY
+// #define UNITS_PRES_MILLIBARS
+// #define UNITS_PRES_ATMOSPHERES
+// #define UNITS_PRES_GRAMSPERSQUARECENTIMETER
+// #define UNITS_PRES_POUNDSPERSQUAREINCH
+
+// UNITS - VISIBILITY DISTANCE
+//   Metric   : Kilometers
+//   Imperial : Miles
+// #define UNITS_DIST_KILOMETERS
+#define UNITS_DIST_MILES
 
 // AIR QUALITY INDEX
 // Seemingly every country uses a different scale for Air Quality Index (AQI).
@@ -66,7 +97,7 @@
 // #define UNITED_KINGDOM_DAQI
 #define UNITED_STATES_AQI
 
-// WIND
+// WIND ICON PRECISION
 // The wind direction icon shown to the left of the wind speed can indicate wind
 // direction with a minimum error of ±0.5°. This uses more flash storage because
 // 360 24x24 wind direction icons must be stored, totaling ~25kB. For either
@@ -87,6 +118,16 @@
 #define WIND_DIRECTIONS_SECONDARY_INTERCARDINAL
 // #define WIND_DIRECTIONS_TERTIARY_INTERCARDINAL
 // #define WIND_DIRECTIONS_360
+
+/* DISABLE ALERTS
+ * The handling of alerts is complex. Each country has a unique national alert
+ * system that recieves alerts from many different government agencies. This 
+ * results is huge variance in the formatting of alerts. OpenWeatherMap provides
+ * alerts in English only. Any combination of these factors may make it
+ * undesirable to display alerts in some regions.
+ * Disable alerts by uncommenting the ALERTS_DISABLED macro.
+ */
+// define ALERTS_DISABLED
 
 // Set the below constants in "config.cpp"
 extern const uint8_t PIN_BAT_ADC;
