@@ -35,12 +35,12 @@ const uint8_t PIN_BME_SCL = 16;
 const uint8_t BME_ADDRESS = 0x76; // if sensor does not work, try 0x77
 
 // WIFI CREDENTIALS
-const char *WIFI_SSID     = "ssid";
-const char *WIFI_PASSWORD = "password";
+const char *WIFI_SSID     = "Hampshire";
+const char *WIFI_PASSWORD = "janhampshire";
 
 // OPENWEATHERMAP API
 // OpenWeatherMap API key, https://openweathermap.org/
-const String OWM_APIKEY   = "abcdefghijklmnopqrstuvwxyz012345";
+const String OWM_APIKEY   = "b552dfd918f5b7c008208f539f5b8b69";
 const String OWM_ENDPOINT = "api.openweathermap.org";
 // OpenWeatherMap One Call 2.5 API is deprecated for all new free users 
 // (accounts created after Summer 2022).
@@ -61,15 +61,15 @@ const String OWM_ONECALL_VERSION = "3.0";
 // LOCATION
 // Set your latitude and longitude.
 // (used to get weather data as part of API requests to OpenWeatherMap)
-const String LAT = "40.7128";
-const String LON = "-74.0060";
+const String LAT = "51.1858";
+const String LON = "-0.6845";
 // City name that will be shown in the top-right corner of the display.
-const String CITY_STRING = "New York, New York";
+const String CITY_STRING = "Elstead, Surrey";
 
 // TIME
 // For list of time zones see 
 // https://github.com/nayarsystems/posix_tz_db/blob/master/zones.csv
-const char *TIMEZONE = "EST5EDT,M3.2.0,M11.1.0";
+const char *TIMEZONE = "GMT0BST,M3.5.0/1,M10.5.0";
 // Time format used when displaying sunrise/set times. (Max 11 characters)
 // For more information about formatting see
 // https://man7.org/linux/man-pages/man3/strftime.3.html
@@ -83,7 +83,8 @@ const char *HOUR_FORMAT = "%H";      // 24-hour ex: 01   23
 // Date format used when displaying date in top-right corner. For more 
 // For more information about formatting see
 // https://man7.org/linux/man-pages/man3/strftime.3.html
-const char *DATE_FORMAT = "%A, %B %e"; // Saturday, January 1
+//const char *DATE_FORMAT = "%A, %B %e"; // Saturday, January 1
+const char *DATE_FORMAT = "%e %B %Y (%a) "; // 1 Jan 23 (Sat)
 // Date/Time format used when displaying the last refresh time along the bottom
 // of the screen
 // For more information about formatting see
@@ -97,7 +98,7 @@ const char *NTP_SERVER_2 = "time.nist.gov";
 // Sleep duration in minutes. (aka how often esp32 will wake for an update)
 // Aligned to the nearest minute boundary, so if 30 will always update at 00 or 
 // 30 past the hour. (range: 0-59)
-const long SLEEP_DURATION = 30;
+const long SLEEP_DURATION = 10;
 // If BED_TIME == WAKE_TIME, then this battery saving feature will be disabled.
 // (range: 0-23)
 const int BED_TIME  = 00; // Last update at 00:00 (midnight) until WAKE_TIME.

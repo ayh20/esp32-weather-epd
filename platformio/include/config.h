@@ -45,8 +45,8 @@
 // official support for your locale.
 // Uncomment your preferred locale. (exactly 1 must be defined)
 // #define LOCALE_de_DE  // German
-// #define LOCALE_en_GB  // British English
-#define LOCALE_en_US     // American English
+#define LOCALE_EN_GB
+// #define LOCALE_EN_US
 // #define LOCALE_nl_BE  // Belgian Dutch
 
 // UNITS
@@ -56,8 +56,8 @@
 //   Metric   : Celsius
 //   Imperial : Fahrenheit
 // #define UNITS_TEMP_KELVIN
-// #define UNITS_TEMP_CELSIUS
-#define UNITS_TEMP_FAHRENHEIT
+#define UNITS_TEMP_CELSIUS
+//#define UNITS_TEMP_FAHRENHEIT
 
 // UNITS - WIND SPEED
 //   Metric   : Kilometers per Hour
@@ -74,9 +74,9 @@
 //   Imperial : Inches of Mercury
 // #define UNITS_PRES_HECTOPASCALS
 // #define UNITS_PRES_PASCALS
-// #define UNITS_PRES_MILLIMETERSOFMERCURY
-#define UNITS_PRES_INCHESOFMERCURY
-// #define UNITS_PRES_MILLIBARS
+//#define UNITS_PRES_MILLIMETERSOFMERCURY
+//#define UNITS_PRES_INCHESOFMERCURY
+#define UNITS_PRES_MILLIBARS
 // #define UNITS_PRES_ATMOSPHERES
 // #define UNITS_PRES_GRAMSPERSQUARECENTIMETER
 // #define UNITS_PRES_POUNDSPERSQUAREINCH
@@ -101,8 +101,8 @@
 // #define MAINLAND_CHINA_AQI
 // #define SINGAPORE_PSI
 // #define SOUTH_KOREA_CAI
-// #define UNITED_KINGDOM_DAQI
-#define UNITED_STATES_AQI
+#define UNITED_KINGDOM_DAQI
+//#define UNITED_STATES_AQI
 
 // WIND ICON PRECISION
 // The wind direction icon shown to the left of the wind speed can indicate wind
