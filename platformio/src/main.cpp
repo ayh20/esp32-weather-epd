@@ -192,7 +192,7 @@ void setup()
       Serial.println("SSID Not Available");
       do
       {
-        drawError(wifi_off_196x196, "SSID Not Available", "");
+        drawError(wifi_x_196x196, "SSID Not Available", "");
       } while (display.nextPage());
     }
     else
@@ -200,7 +200,7 @@ void setup()
       Serial.println("WiFi Connection Failed");
       do
       {
-        drawError(wifi_off_196x196, "WiFi Connection", "Failed");
+        drawError(wifi_x_196x196, "WiFi Connection", "Failed");
       } while (display.nextPage());
     }
     display.powerOff();
@@ -260,7 +260,7 @@ void setup()
   // GET INDOOR TEMPERATURE AND HUMIDITY, start BME280...
   float inTemp     = NAN;
   float inHumidity = NAN;
-
+  Serial.print("Reading from BME280... ");
   TwoWire I2C_bme = TwoWire(0);
   Adafruit_BME280 bme;
 
@@ -276,17 +276,23 @@ void setup()
     //       displayed.
     if (isnan(inTemp) || isnan(inHumidity)) {
       statusStr = "BME read failed";
+      Serial.println(statusStr);
+    }
+    else
+    {
+      Serial.println("Success");
     }
   }
   else
   {
     statusStr = "BME not found"; // check wiring
+    Serial.println(statusStr);
   }
 
-  // RENDER FULL REFRESH
   String dateStr;
   getDateStr(dateStr, &timeInfo);
 
+  // RENDER FULL REFRESH
   initDisplay();
   do
   {
@@ -295,7 +301,7 @@ void setup()
     drawForecast(owm_onecall.daily, timeInfo);
     drawLocationDate(CITY_STRING, dateStr);
     drawOutlookGraph(owm_onecall.hourly, timeInfo);
-#ifndef ALERTS_DISABLED
+#ifndef DISABLE_ALERTS
     drawAlerts(owm_onecall.alerts, CITY_STRING, dateStr);
 #endif
     drawStatusBar(statusStr, refreshTimeStr, wifiRSSI, batteryVoltage);
@@ -303,7 +309,6 @@ void setup()
   display.powerOff();
 
   // DEEP-SLEEP
-  Serial.println("Status: " + statusStr);
   beginDeepSleep(startTime, &timeInfo);
 } // end setup
 
@@ -312,3 +317,4 @@ void setup()
 void loop()
 {
 } // end loop
+

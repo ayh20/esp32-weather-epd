@@ -19,7 +19,6 @@
 #define __CONFIG_H__
 
 #include <cstdint>
-#include <vector>
 #include <Arduino.h>
 
 // E-PAPER PANEL
@@ -28,19 +27,27 @@
 //             https://www.waveshare.com/product/7.5inch-e-paper-hat.htm
 //   DISP_3C - Waveshare 800x480, 7.5inch E-Ink display, Red/Black/White
 //             https://www.waveshare.com/product/7.5inch-e-paper-hat-b.htm
-//   Note: Although this 3-color panel is supported, this program only draws
-//         black/white to the screen. (i.e. no red icons/text)
 // Uncomment the macro that identifies your panel. (exactly 1 must be defined)
 #define DISP_BW
-// #define DISP_3C
+//#define DISP_3C
+
+// 3 Color E-Ink display
+// Defines the 3rd color to be used when a 3 color display is selected.
+#ifdef DISP_3C
+    #define ACCENT_COLOR GxEPD_RED
+#else
+    #define ACCENT_COLOR GxEPD_BLACK
+#endif
 
 // LOCALE
 // If your locale is not here, you can add it by copying and modifying one of
 // the files in src/locales. Please feel free to create a pull request to add
 // official support for your locale.
 // Uncomment your preferred locale. (exactly 1 must be defined)
-// #define LOCALE_EN_GB
-#define LOCALE_EN_US
+// #define LOCALE_de_DE  // German
+// #define LOCALE_en_GB  // British English
+#define LOCALE_en_US     // American English
+// #define LOCALE_nl_BE  // Belgian Dutch
 
 // UNITS
 // Define exactly one macro for each unit below.
@@ -119,15 +126,45 @@
 // #define WIND_DIRECTIONS_TERTIARY_INTERCARDINAL
 // #define WIND_DIRECTIONS_360
 
-/* DISABLE ALERTS
- * The handling of alerts is complex. Each country has a unique national alert
- * system that recieves alerts from many different government agencies. This 
- * results is huge variance in the formatting of alerts. OpenWeatherMap provides
- * alerts in English only. Any combination of these factors may make it
- * undesirable to display alerts in some regions.
- * Disable alerts by uncommenting the ALERTS_DISABLED macro.
- */
-// define ALERTS_DISABLED
+// FONTS
+// A handful of popular Open Source typefaces have been included with this
+// project for your convenience. Change the font by selecting its corresponding
+// header file.
+//
+// FONT           HEADER FILE                     FAMILY          LICENSE
+// FreeMono       "fonts/FreeMono.h"              GNU FreeFont    GNU GPL v3.0
+// FreeSans       "fonts/FreeSans.h"              GNU FreeFont    GNU GPL v3.0
+// FreeSerif      "fonts/FreeSerif.h"             GNU FreeFont    GNU GPL v3.0
+// Lato           "fonts/Lato_Regular.h           Lato            SIL OFL 1.1
+// Montserrat     "fonts/Montserrat_Regular.h     Montserrat      SIL OFL 1.1
+// Open Sans      "fonts/OpenSans_Regular.h       Open Sans       SIL OFL 1.1
+// Poppins        "fonts/Poppins_Regular.h        Poppins         SIL OFL 1.1
+// Quicksand      "fonts/Quicksand_Regular.h      Quicksand       SIL OFL 1.1
+// Raleway        "fonts/Raleway_Regular.h        Raleway         SIL OFL 1.1
+// Roboto         "fonts/Roboto_Regular.h         Roboto          Apache v2.0
+// Roboto Mono    "fonts/RobotoMono_Regular.h     Roboto Mono     Apache v2.0
+// Roboto Slab    "fonts/RobotoSlab_Regular.h     Roboto Slab     Apache v2.0
+// Ubuntu         "fonts/Ubuntu_R.h               Ubuntu font     UFL v1.0
+// Ubuntu Mono    "fonts/UbuntuMono_R.h           Ubuntu font     UFL v1.0
+//
+// Adding new fonts is relatively straightforward, see
+// esp32-weather-epd/fonts/README.
+//
+// Note:
+//   The layout of the display was designed around spacing and size of the GNU
+//   FreeSans font, but this project supports the ability to modularly swap 
+//   fonts. Using a font other than FreeSans may result in undesired spacing or
+//   artifacts.
+#define FONT_HEADER "fonts/FreeSans.h"
+
+// DISABLE ALERTS
+// The handling of alerts is complex. Each country has a unique national alert
+// system that recieves alerts from many different government agencies. This 
+// results is huge variance in the formatting of alerts. OpenWeatherMap provides
+// alerts in English only. Any combination of these factors may make it
+// undesirable to display alerts in some regions.
+// Disable alerts by uncommenting the DISABLE_ALERTS macro.
+#define DISABLE_ALERTS
 
 // Set the below constants in "config.cpp"
 extern const uint8_t PIN_BAT_ADC;
@@ -161,6 +198,7 @@ extern const int BED_TIME;
 extern const int WAKE_TIME;
 extern const char UNITS;
 extern const int HOURLY_GRAPH_MAX;
+extern const float BATTERY_WARN_VOLTAGE;
 extern const float LOW_BATTERY_VOLTAGE;
 extern const float VERY_LOW_BATTERY_VOLTAGE;
 extern const float CRIT_LOW_BATTERY_VOLTAGE;
